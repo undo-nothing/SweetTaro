@@ -1,0 +1,28 @@
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
+migrations
+
+# dev config file
+config-dev.ini
+
+# Backup files #
+*.bak
+
+# PyCharm
+.idea
+
+# pyenv
+.python-version
+
+# celery
+celerybeat-schedule.*
+
+# others
+data
+backup
+*.csv

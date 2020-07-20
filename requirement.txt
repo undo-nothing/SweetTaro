@@ -1,0 +1,8 @@
+Django==3.0.3
+djangorestframework==3.11.0
+djangorestframework-jwt==1.11.0
+mysqlclient==1.4.6
+django-filter==2.2.0
+cython==0.29.15
+coreapi==2.3.3
+redis==3.4.1
