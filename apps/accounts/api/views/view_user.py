@@ -4,14 +4,14 @@ from rest_framework import mixins
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
-from apps.api.viewset import BaseGenericViewSet
+from apps.api.viewset import ApiGenericViewSet
 from apps.accounts.api import serializers
 
 
 User = get_user_model()
 
 
-class UserViewSet(BaseGenericViewSet,
+class UserViewSet(ApiGenericViewSet,
                   mixins.ListModelMixin,
                   mixins.CreateModelMixin,
                   mixins.RetrieveModelMixin,

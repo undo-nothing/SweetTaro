@@ -5,7 +5,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .pagination import DefaultPaginationBase
 
 
-class BaseGenericViewSet(viewsets.GenericViewSet):
+class ApiGenericViewSet(viewsets.GenericViewSet):
 
     model = None
     pagination_class = DefaultPaginationBase

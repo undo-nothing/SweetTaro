@@ -5,9 +5,11 @@ from rest_framework.documentation import include_docs_urls
 from rest_framework.routers import DefaultRouter
 
 from apps.accounts.api.urls import accounts_register_list
+from apps.bing_wapper.api.urls import bing_wapper_register_list
 
 register_list = []
 register_list += accounts_register_list
+register_list += bing_wapper_register_list
 
 
 router = DefaultRouter()

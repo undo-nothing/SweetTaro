@@ -6,10 +6,10 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from apps.accounts.api import serializers
-from apps.api.viewset import BaseGenericViewSet
+from apps.api.viewset import ApiGenericViewSet
 
 
-class PermissionViewSet(BaseGenericViewSet,
+class PermissionViewSet(ApiGenericViewSet,
                         mixins.ListModelMixin,
                         # mixins.CreateModelMixin,
                         mixins.RetrieveModelMixin,

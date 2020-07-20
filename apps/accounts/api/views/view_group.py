@@ -1,11 +1,11 @@
 from rest_framework import mixins
 from django.contrib.auth.models import Group
 
-from apps.api.viewset import BaseGenericViewSet
+from apps.api.viewset import ApiGenericViewSet
 from apps.accounts.api import serializers
 
 
-class GroupViewSet(BaseGenericViewSet,
+class GroupViewSet(ApiGenericViewSet,
                    mixins.ListModelMixin,
                    mixins.CreateModelMixin,
                    mixins.RetrieveModelMixin,
