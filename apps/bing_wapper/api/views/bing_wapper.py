@@ -3,6 +3,7 @@ from rest_framework import mixins
 from apps.api.viewset import ApiGenericViewSet
 from apps.bing_wapper.models import BingWapper
 from apps.bing_wapper.api import serializers
+from apps.bing_wapper.api.filters import BingWapperFilter
 
 
 class BingWapperViewSet(ApiGenericViewSet,
@@ -16,6 +17,8 @@ class BingWapperViewSet(ApiGenericViewSet,
     """
     model = BingWapper
     queryset = BingWapper.objects.all()
+    ordering_fields = ('id', 'date')
+    filter_class = BingWapperFilter
 
     serializer_dict = {
         'list': serializers.BingWapperSerializer,
