@@ -3,6 +3,7 @@ from django.contrib.auth.models import Group
 
 from apps.api.viewset import ApiGenericViewSet
 from apps.accounts.api import serializers
+from apps.api.mixins import ExportModelMixin
 
 
 class GroupViewSet(ApiGenericViewSet,
@@ -10,7 +11,8 @@ class GroupViewSet(ApiGenericViewSet,
                    mixins.CreateModelMixin,
                    mixins.RetrieveModelMixin,
                    mixins.UpdateModelMixin,
-                   mixins.DestroyModelMixin):
+                   mixins.DestroyModelMixin,
+                   ExportModelMixin):
     """
     GroupViewSet
     """

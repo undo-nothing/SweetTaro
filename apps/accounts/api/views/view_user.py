@@ -6,6 +6,7 @@ from rest_framework.decorators import action
 
 from apps.api.viewset import ApiGenericViewSet
 from apps.accounts.api import serializers
+from apps.api.mixins import ExportModelMixin
 
 
 User = get_user_model()
@@ -16,7 +17,8 @@ class UserViewSet(ApiGenericViewSet,
                   mixins.CreateModelMixin,
                   mixins.RetrieveModelMixin,
                   mixins.UpdateModelMixin,
-                  mixins.DestroyModelMixin):
+                  mixins.DestroyModelMixin,
+                  ExportModelMixin):
     """
     UserList
     """

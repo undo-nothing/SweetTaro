@@ -7,6 +7,7 @@ from rest_framework.response import Response
 
 from apps.accounts.api import serializers
 from apps.api.viewset import ApiGenericViewSet
+from apps.api.mixins import ExportModelMixin
 
 
 class PermissionViewSet(ApiGenericViewSet,
@@ -14,7 +15,8 @@ class PermissionViewSet(ApiGenericViewSet,
                         # mixins.CreateModelMixin,
                         mixins.RetrieveModelMixin,
                         # mixins.UpdateModelMixin,
-                        # mixins.DestroyModelMixin
+                        # mixins.DestroyModelMixin,
+                        ExportModelMixin,
                         ):
     """
     PermissionViewSet

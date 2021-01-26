@@ -4,6 +4,7 @@ from apps.api.viewset import ApiGenericViewSet
 from apps.bing_wapper.models import BingWapper
 from apps.bing_wapper.api import serializers
 from apps.bing_wapper.api.filters import BingWapperFilter
+from apps.api.mixins import ExportModelMixin
 
 
 class BingWapperViewSet(ApiGenericViewSet,
@@ -11,7 +12,8 @@ class BingWapperViewSet(ApiGenericViewSet,
                         mixins.CreateModelMixin,
                         mixins.RetrieveModelMixin,
                         mixins.UpdateModelMixin,
-                        mixins.DestroyModelMixin):
+                        mixins.DestroyModelMixin,
+                        ExportModelMixin):
     """
     BingWapperList
     """

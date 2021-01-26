@@ -3,6 +3,7 @@ from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
 
 from .pagination import DefaultPaginationBase
+from .serializers import NoneSerializer
 
 
 class ApiGenericViewSet(viewsets.GenericViewSet):
@@ -14,4 +15,4 @@ class ApiGenericViewSet(viewsets.GenericViewSet):
                        filters.OrderingFilter)
 
     def get_serializer_class(self):
-        return self.serializer_dict.get(self.action, None)
+        return self.serializer_dict.get(self.action, NoneSerializer)
