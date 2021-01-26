@@ -1,4 +1,5 @@
 from rest_framework import mixins
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from apps.api.viewset import ApiGenericViewSet
 from apps.bing_wapper.models import BingWapper
@@ -21,6 +22,7 @@ class BingWapperViewSet(ApiGenericViewSet,
     queryset = BingWapper.objects.all()
     ordering_fields = ('id', 'date')
     filter_class = BingWapperFilter
+    permission_classes = (IsAuthenticatedOrReadOnly, )
 
     serializer_dict = {
         'list': serializers.BingWapperSerializer,
