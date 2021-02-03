@@ -141,6 +141,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+FILE_URL = '/files/'
+FILE_ROOT = os.path.join(BASE_DIR, 'data')
 
 # django-rest-framework setting
 REST_FRAMEWORK = {

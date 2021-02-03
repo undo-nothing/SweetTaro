@@ -23,7 +23,5 @@ config-dev.ini
 celerybeat-schedule.*
 
 # others
-data
 backup
-*.csv
 todo.md
