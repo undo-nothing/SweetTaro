@@ -55,8 +55,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'apps.api.middleware.CsrfMiddleware',
 ]
+if CONFIG_FILE.getboolean('SYSTEM', 'CSRF_ALLOW', fallback='False'):
+    MIDDLEWARE.append('apps.api.middleware.CsrfMiddleware')
 
 ROOT_URLCONF = 'SweetTaro.urls'
 

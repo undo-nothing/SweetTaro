@@ -15,3 +15,4 @@ class BingWapper(models.Model):
         db_table = 'bing_wapper'
         verbose_name = 'BingWapper'
         verbose_name_plural = verbose_name
+        ordering = ['id']

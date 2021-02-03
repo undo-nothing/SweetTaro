@@ -23,7 +23,7 @@ def main():
 
 def get_data_list():
     data_list = []
-    video_list_file = os.path.join(DATA_PATH, 'bingwapper_list.csv')
+    video_list_file = os.path.join(DATA_PATH, 'bing_wapper.csv')
     with open(video_list_file, 'r', encoding='utf8') as f:
         data_list = list(csv.DictReader(f))
 
@@ -38,15 +38,18 @@ def insert_data():
     for data in datas:
         if data['filename'] in filename_set:
             continue
+
+        for key in data:
+            if data[key] == '':
+                data[key] = None
+
         info = {
             'filename': data['filename'],
             'title': data['title'],
+            'author': data['author'],
             'date': data['date'],
             'location': data['location'],
             'description': data['description'],
-            'url': data['url'],
-            'keyword': data['keyword'],
-            'author': data['author']
         }
         wapper_list.append(BingWapper(**info))
 

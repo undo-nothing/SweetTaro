@@ -36,6 +36,7 @@ class CsvExport(object):
         writer = csv.writer(response, dialect='excel')
         if self.headers:
             writer.writerow(self.headers)
+
         for data in self.datas:
             writer.writerow([data.get(field, '') for field in self.fields])
         return response

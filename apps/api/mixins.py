@@ -12,7 +12,6 @@ class ExportModelMixin(object):
 
     def get_export_data(self, request):
         queryset = self.filter_queryset(self.get_queryset())
-        print(request.query_params)
         if not request.query_params.get('export_all') == 'true':
             queryset = self.paginate_queryset(queryset)
         serializer = self.get_serializer(queryset, many=True)
@@ -67,7 +66,8 @@ class ExportModelMixin(object):
 
     @action(methods=['get'], detail=False)
     def export(self, request, async_task=True, recorder=None):
-        self.export_headers = self.export_headers = request.query_params.get('export_headers', "").split(",")
+        self.export_headers = request.query_params.get('export_headers')
+        self.export_headers = self.export_headers.split(",") if isinstance(self.export_headers, str) else []
         file_format = request.query_params.get('export_type', '')
         if file_format not in ('csv', 'txt', 'xls', 'pdf'):
             message = 'export_type required and must in csv txt xls pdf'
@@ -75,6 +75,7 @@ class ExportModelMixin(object):
 
         export_data = self.get_export_data(request)
         data_fields = list(export_data[0].keys()) if len(export_data) else []
+        self.export_headers = self.export_headers if self.export_headers else data_fields
         headers_list = []
         for header in self.export_headers:
             if header in data_fields:
