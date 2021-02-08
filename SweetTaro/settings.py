@@ -16,7 +16,7 @@ sys.path.insert(0, BASE_DIR)
 SECRET_KEY = '%n=qka!hlj28jiq1%z+!+)=m16a&g=l2g%_8=apx_2*%*(rbc('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 CONFIG_FILE = configparser.RawConfigParser(strict=False, allow_no_value=True)
 if DEBUG:
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
+    'django_celery_beat',
 
     'apps.accounts',
     'apps.bing_wapper',
@@ -188,3 +189,16 @@ CACHES = {
 
     }
 }
+
+
+REDIS_DATABASE_DB = CONFIG_FILE.getint('CACHE', 'REDIS_DATABASE_DB')
+CELERY_BROKER_DB = CONFIG_FILE.getint('CELERY', 'CELERY_BROKER_DB')
+CELERY_RESULT_DB = CONFIG_FILE.getint('CELERY', 'CELERY_RESULT_DB')
+
+REDIS_DATABASE_URL = 'redis://:{password}@{host}:{port}/{db}'.format(
+    host=REDIS_HOST, port=REDIS_PORT, password=REDIS_PASSWORD, db=REDIS_DATABASE_DB)
+BROKER_URL = 'redis://:{password}@{host}:{port}/{db}'.format(
+    host=REDIS_HOST, port=REDIS_PORT, password=REDIS_PASSWORD, db=CELERY_BROKER_DB)
+CELERY_RESULT_BACKEND = 'redis://:{password}@{host}:{port}/{db}'.format(
+    host=REDIS_HOST, port=REDIS_PORT, password=REDIS_PASSWORD, db=CELERY_RESULT_DB)
+DJANGO_CELERY_BEAT_TZ_AWARE = False
