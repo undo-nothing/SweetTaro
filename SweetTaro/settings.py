@@ -141,6 +141,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+if CONFIG_FILE.get('SYSTEM', 'MEDIA_ROOT'):
+    MEDIA_ROOT = CONFIG_FILE.get('SYSTEM', 'MEDIA_ROOT')
 
 FILE_URL = '/files/'
 FILE_ROOT = os.path.join(BASE_DIR, 'data')

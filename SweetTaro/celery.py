@@ -1,7 +1,9 @@
 import os
-from celery import Celery
+from celery import Celery, platforms
 from celery.utils.log import get_task_logger
 # from django.conf import settings
+
+platforms.C_FORCE_ROOT = True
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'SweetTaro.settings')
 

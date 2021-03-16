@@ -22,6 +22,7 @@ api_docs_urls = [
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='api-auth')),
     path('api-token-auth/', authtoken_views.obtain_auth_token),
     path('jwt-api-token-auth/', obtain_jwt_token),
     path('docs/', include_docs_urls(patterns=api_docs_urls, title="BioIclock API DOCS")),

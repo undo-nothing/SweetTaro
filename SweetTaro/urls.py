@@ -12,7 +12,6 @@ def index(request):
 urlpatterns = [
     path('', index),
     path('v1.0/', include('apps.api.urls')),
-    path('api-auth/', include('rest_framework.urls', namespace='api-auth')),
     path('favicon.ico', serve, {'document_root': settings.BASE_DIR, 'path': 'static/favicon.ico'})
 ]
 
